@@ -12,9 +12,10 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $program = new Program();
-        $program->setTitle('Peppa Pig');
-        $program->setSynopsis('Peppa vit avec son frère Georges et ses parents dans une maison sur la colline.');
-        $program->setCategory($this->getReference('category_Animation'));
+        $program
+            ->setTitle('Peppa Pig')
+            ->setSynopsis('Peppa vit avec son frère Georges et ses parents dans une maison sur la colline.')
+            ->setCategory($this->getReference('category_Animation'));
         $manager->persist($program);
 
         $program1 = new Program();

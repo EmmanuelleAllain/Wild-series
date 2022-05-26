@@ -3,5 +3,20 @@
 {% block title %}Wild Series{% endblock %}
 
 {% block body %}
-    <h1>Bienvenue !</h1>
+    <h1>Wild Series</h1>
+    <div>
+        <h2>Les dernières séries ajoutées à ma watchlist</h2>
+    </div>
+    <div>
+        <h2>Les séries</h2>
+        <button class='btn bg-primary text-light'>
+            <a href="{{ path('program_index') }}">
+            Rechercher une série
+            </a>
+        </button>
+    </div>
+    <div>
+        <h2>Les acteurs</h2>
+    </div>
+    
 {% endblock %}

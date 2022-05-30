@@ -12,7 +12,7 @@
         <h3>Episode {{ episode.number }} : {{ episode.title }}</h3>
         <p>{{ episode.synopsis }}</p>
     {% endfor %}
-<a href="{{ path('program_show', { id:program.id }) }}">
+<a href="{{ path('program_show', { programId:program.id }) }}">
 Retour à la fiche de la série
 </a>
 {% endblock %}

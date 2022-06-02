@@ -18,6 +18,16 @@
             <p>{{ season.year }}</p>
             <p>Description : {{ season.description }}</p>
             {% endfor %}
+
+            <strong>Acteurs :</strong>
+
+        <ul>
+            {% for actor in program.actors %}
+                <a href="{{ path('app_actor_show', {id: actor.id}) }}"><li>{{ actor.name }}</li></a>
+            {% else %}
+                <li>Aucun acteur pour cette série</li>
+            {% endfor %}
+        </ul>
         </div>
     </div>
 

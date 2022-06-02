@@ -6,8 +6,15 @@ use App\Repository\ProgramRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProgramRepository::class)]
+#[Assert\EnableAutoMapping]
+#[UniqueEntity(
+    fields: ['title'],
+    message: 'Cette série existe déjà.'
+)]
 class Program
 {
     #[ORM\Id]
@@ -15,10 +22,17 @@ class Program
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, unique:true)]
+    #[Assert\NotBlank(message: 'Ce champ ne peut pas être vide')]
     private $title;
 
     #[ORM\Column(type: 'text', length: 700)]
+    #[Assert\NotBlank]
+    #[Assert\Regex(
+        pattern: '/plus belle la vie/i',
+        match: false,
+        message: 'On parle de vraies séries ici',
+    )]
     private $synopsis;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]

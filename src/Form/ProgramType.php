@@ -3,11 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Program;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use App\Entity\Actor;
 
 class ProgramType extends AbstractType
 {
@@ -22,6 +24,14 @@ class ProgramType extends AbstractType
             ->add('category', null, [
                 'label' => 'Catégorie',
                 'choice_label' => 'name'])
+            ->add('actors', EntityType::class, [
+                'label' => 'Acteurs',
+                'class' => Actor::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => true,
+                'by_reference' => false
+            ])
         ;
     }
 
